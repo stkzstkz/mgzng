@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Controll : MonoBehaviour
 {
-    private float moveSpeed = 2f;
-    private float acceleration = 0.01f;
-    private float leftRightSpeed = 4f;
+    [SerializeField] private float moveSpeed = 4f;
+    private float leftRightSpeed = 8f;
     private float limit = 8f;
     private Vector3 jump;
     private float jumpForce = 5.0f;
