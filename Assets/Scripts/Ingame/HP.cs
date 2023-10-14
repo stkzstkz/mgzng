@@ -8,7 +8,7 @@ public class HP : MonoBehaviour
     [SerializeField] private GameObject lifeObj;
     public GameManager gm;
     public static HP Instance {get; private set; }
-    public int life = 1;
+    public int life = 5;
     private void Awake()
     {
         Instance = this;
@@ -20,8 +20,9 @@ public class HP : MonoBehaviour
         if(life <= 0)
         {
             gm.GameOver();
+        }else{
+            Destroy(transform.GetChild(damage).gameObject);
         }
-        Destroy(transform.GetChild(damage).gameObject);
     }
     // Start is called before the first frame update
     void Start()

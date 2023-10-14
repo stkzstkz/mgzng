@@ -5,12 +5,15 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float MinSpeed = 1.59f;
+    [SerializeField] private float MaxSpeed = 2.41f;
     private float time = 0f;
     [SerializeField] private float interval = 30f;
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed = Random.Range(1.59f,2.41f);
+        // moveSpeed = Random.Range(1.59f,2.41f); in movespeed = 2
+        moveSpeed = Random.Range(4.374f,6.626f);
         if(this.transform.position.x < 0) {
             moveSpeed = -1*moveSpeed;
         }

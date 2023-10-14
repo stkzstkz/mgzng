@@ -6,8 +6,13 @@ public class ZngCar : MonoBehaviour
 {
     [SerializeField] private GameObject ZngPrefab;
     [SerializeField] private GameObject OjmPrefab;
-    [SerializeField] private float interval4Zng;
-    [SerializeField] private float interval4Ojm;
+    private float interval4Zng;
+    private float interval4Ojm;
+    // Before interval for Zng
+    [SerializeField] private float MinSpeed4Zng = 1f;
+    [SerializeField] private float MaxSpeed4Zng = 2f;
+    [SerializeField] private float MinSpeed4Ojm = 3f;
+    [SerializeField] private float MaxSpeed4Ojm = 5.5f;
     private float time4Zng = 0f;
     private float time4Ojm = 0f;
     [SerializeField] private float moveSpeed = 2f;
@@ -20,8 +25,8 @@ public class ZngCar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        interval4Ojm = Random.Range(5f,10f);
-        interval4Zng = Random.Range(5f,10f);
+        interval4Ojm = Random.Range(MinSpeed4Ojm,MaxSpeed4Ojm);
+        interval4Zng = Random.Range(MinSpeed4Zng,MaxSpeed4Zng);
         OjmDirectionR = Random.value > 0.5;
     }
 
@@ -37,7 +42,7 @@ public class ZngCar : MonoBehaviour
             ZngPos.y = 2.3f;
             ZngPos.z -= 15f;
             Zng.transform.position = ZngPos;
-            interval4Zng = Random.Range(5f,10f);
+            interval4Zng = Random.Range(MinSpeed4Zng,MaxSpeed4Zng);
             time4Zng = 0f;
         }
         if (time4Ojm > interval4Ojm) 
@@ -53,7 +58,7 @@ public class ZngCar : MonoBehaviour
                 OjmPos.x = -1*x;
             }
             Ojm.transform.position = OjmPos;
-            interval4Ojm = Random.Range(5f,10f);
+            interval4Ojm = Random.Range(MinSpeed4Ojm,MaxSpeed4Ojm);
             time4Ojm = 0f;
         }
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);

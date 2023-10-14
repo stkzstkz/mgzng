@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 66857466}
   - component: {fileID: 66857465}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 142038143}
   - component: {fileID: 142038142}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 201473840}
   - component: {fileID: 201473839}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: RetryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -888,8 +888,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8, y: 139}
-  m_SizeDelta: {x: -1520, y: -880}
+  m_AnchoredPosition: {x: 71.54996, y: 139}
+  m_SizeDelta: {x: -1392.8999, y: -880}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &768379725
 MonoBehaviour:
@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: cce12b9108b204eb59c0343e560975e0, type: 3}
+  m_Texture: {fileID: 2800000, guid: 81df507fa00a84641b8841c160a46a2e, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1379,8 +1379,9 @@ GameObject:
   - component: {fileID: 2009043524}
   - component: {fileID: 2009043526}
   - component: {fileID: 2009043525}
+  - component: {fileID: 2009043527}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ZngText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1403,7 +1404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 0.000030517578}
+  m_AnchoredPosition: {x: 34, y: 0.000030517578}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2009043525
@@ -1426,7 +1427,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xD7"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1489,7 +1490,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -54.598145, z: 0, w: -75.178406}
+  m_margin: {x: 0, y: -54.598145, z: -125.26294, w: -75.178406}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1503,3 +1504,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009043523}
   m_CullTransparentMesh: 1
+--- !u!114 &2009043527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009043523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9546e053d72f884986d0d0ef32c26ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NofZng: {fileID: 2009043525}

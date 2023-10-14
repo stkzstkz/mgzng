@@ -28,7 +28,7 @@ public class Collectable : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(this.gameObject);
-            GameScoreStatic.Zng++;
+            CountZng.Instance.AddZng();
         }
     }
 }
