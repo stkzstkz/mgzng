@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Collectable : MonoBehaviour
+using UnityEngine.SceneManagement;
+public class ToIngame : MonoBehaviour
 {
-    public int rotateSpeed = 1;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,14 +13,9 @@ public class Collectable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Destroy(this.gameObject);
-        }
+    public void OnClick() {
+        SceneManager.LoadScene("Ingame");
     }
 }

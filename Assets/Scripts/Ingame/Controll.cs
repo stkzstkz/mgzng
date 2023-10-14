@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class controll : MonoBehaviour
+public class Controll : MonoBehaviour
 {
-    public float moveSpeed = 2f;
-    public float acceleration = 0.01f;
-    public float leftRightSpeed = 4f;
-    public float limit = 5f;
-
-    public Vector3 jump;
-    public float jumpForce = 3.0f;
-    public bool isGrounded;
+    private float moveSpeed = 2f;
+    private float acceleration = 0.01f;
+    private float leftRightSpeed = 4f;
+    private float limit = 8f;
+    private Vector3 jump;
+    private float jumpForce = 5.0f;
+    private bool isGrounded;
     Rigidbody rb;
 
     // Start is called before the first frame update
@@ -35,7 +34,6 @@ public class controll : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
-        moveSpeed += Time.deltaTime * acceleration;
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
@@ -49,7 +47,7 @@ public class controll : MonoBehaviour
         {
             if (transform.position.x < limit)
             {
-                transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed * -1);
+                transform.Translate(Vector3.right * Time.deltaTime * leftRightSpeed);
             }
         }
 
