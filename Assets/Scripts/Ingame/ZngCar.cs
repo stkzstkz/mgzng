@@ -15,6 +15,7 @@ public class ZngCar : MonoBehaviour
     [SerializeField] private float limit = 8.6f;
     private bool DirectionR = true;
     private bool OjmDirectionR = true;
+    [SerializeField] private float x = 42f;
 
     // Start is called before the first frame update
     void Start()
@@ -44,13 +45,12 @@ public class ZngCar : MonoBehaviour
             GameObject Ojm = Instantiate(OjmPrefab);
             Vector3 OjmPos = this.transform.position;
             OjmPos.y = 1.37f;
-            OjmPos.z += 15f;
             OjmDirectionR = Random.value > 0.5;
             if (OjmDirectionR)
             {
-                OjmPos.x = 30f;
+                OjmPos.x = x;
             }else{
-                OjmPos.x = -30f;
+                OjmPos.x = -1*x;
             }
             Ojm.transform.position = OjmPos;
             interval4Ojm = Random.Range(5f,10f);

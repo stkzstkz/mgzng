@@ -311,8 +311,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 620365638}
-        m_TargetAssemblyTypeName: ToIngame, Assembly-CSharp
-        m_MethodName: OnClick
+        m_TargetAssemblyTypeName: ToScene, Assembly-CSharp
+        m_MethodName: ToIngame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

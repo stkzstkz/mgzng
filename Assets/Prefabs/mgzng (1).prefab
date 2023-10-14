@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1839868167721934789}
   - component: {fileID: 8010403940040878165}
   - component: {fileID: 6799206675146909345}
-  - component: {fileID: 518496177931247662}
+  - component: {fileID: -6475733154274938480}
   m_Layer: 0
   m_Name: mgzng (1)
   m_TagString: Untagged
@@ -99,7 +99,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &518496177931247662
+--- !u!114 &-6475733154274938480
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,4 +111,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9f06e5700cf9846bb21faa86cce44f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 7917074482980308550, guid: 4f7895f566a952b45a9c4d69b05942f2, type: 3}
+  player: {fileID: 9176504765445459812, guid: 8920fef49c117d54abbb5466757d4dc4, type: 3}

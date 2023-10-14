@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public GameObject player;
-    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private float moveSpeed;
+    private float time = 0f;
+    [SerializeField] private float interval = 30f;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(this.transform.position);
-        Debug.Log(player.transform.position);
-        if(this.transform.position.x > 0) {
-            moveSpeed = 2f;
+        moveSpeed = Random.Range(1.59f,2.41f);
+        if(this.transform.position.x < 0) {
+            moveSpeed = -1*moveSpeed;
         }
     }
 
@@ -20,12 +20,8 @@ public class Obstacle : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.left * Time.deltaTime * moveSpeed);
-        Debug.Log(this.transform.position);
-        Debug.Log(player.transform.position);
-        // プレイヤーがある程度進んだらザンギをDestroy(メモリリーク要調査)
-        if (player.transform.position.z - 10f > this.transform.position.z)
-        {
-            Debug.Log("DOjm");
+        time += Time.deltaTime;
+        if (time > interval){
             Destroy(this.gameObject);
         }
     }
@@ -34,6 +30,7 @@ public class Obstacle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            HP.Instance.SetLifeGauge2(1);
             Destroy(this.gameObject);
         }
     }

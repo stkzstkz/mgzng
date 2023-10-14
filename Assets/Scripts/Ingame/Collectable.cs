@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    public GameObject player;
+    private float time = 0f;
+    [SerializeField] private float interval = 30f;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(this.transform.position);
-        Debug.Log(player.transform.position);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         // プレイヤーがある程度進んだらザンギをDestroy(メモリリーク要調査)
-        if (player.transform.position.z - 10f > this.transform.position.z)
-        {
-            // Debug.Log("DZng");
+        time += Time.deltaTime;
+        if (time > interval){
             Destroy(this.gameObject);
         }
-        
     }
 
     // プレイヤーに当たったらの処理
@@ -30,6 +28,7 @@ public class Collectable : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(this.gameObject);
+            GameScoreStatic.Zng++;
         }
     }
 }
