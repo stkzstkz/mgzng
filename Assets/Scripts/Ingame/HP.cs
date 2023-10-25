@@ -16,7 +16,6 @@ public class HP : MonoBehaviour
     public void SetLifeGauge2(int damage) {
         //　最後のライフゲージを削除
         life = life - damage;
-        Debug.Log(life);
         if(life <= 0)
         {
             gm.GameOver();

@@ -1,20 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Ranking : MonoBehaviour
 {
-    public static Ranking Instance { get; private set; }
-    private void Awake()
-    {
-        Instance = this;
-    }
-    string[] num = { " 1. ", " 2. ", " 3. ", " 4. ", " 5. ", " 6. ", " 7. ", " 8. ", " 9. ", "10. "};
-    int[] score = new int[10];
+    private string[] num = { " 1. ", " 2. ", " 3. ", " 4. ", " 5. ", " 6. ", " 7. ", " 8. ", " 9. ", "10. " };
+    private int[] score = new int[10];
     [SerializeField] private Text rankingText;
-    string sscore;
-
+    [SerializeField] private TMP_InputField input;
+    private static string name = "No Name";
+    private string[] namelist = new string[10];
+    private int Th = -1;
     void Start()
     {
         GetRanking();
@@ -23,6 +22,14 @@ public class Ranking : MonoBehaviour
         for (int i = 0; i < score.Length; i++)
         {
             rankingText.text += num[i];
+            if (score[i] == GameScoreStatic.Zng)
+            {
+                rankingText.text += "";
+            }
+            else
+            {
+                rankingText.text += namelist[i];
+            }
             rankingText.text += score[i].ToString();
             rankingText.text += "\n";
         }
@@ -31,19 +38,21 @@ public class Ranking : MonoBehaviour
     /// <summary>
     /// ランキング呼び出し
     /// </summary>
-    void GetRanking()
+    private void GetRanking()
     {
         //ランキング呼び出し
         for (int i = 0; i < num.Length; i++)
         {
             score[i] = PlayerPrefs.GetInt(num[i]);
+            namelist[i] = PlayerPrefs.GetString(i.ToString());
         }
     }
     /// <summary>
     /// ランキング書き込み
     /// </summary>
-    void SetRanking(int _value)
+    private void SetRanking(int _value)
     {
+        int value4namelist = _value;
         //書き込み用
         for (int i = 0; i < num.Length; i++)
         {
@@ -55,11 +64,33 @@ public class Ranking : MonoBehaviour
                 _value = change;
             }
         }
-
-        //入れ替えた値を保存
-        for (int i = 0; i < num.Length; i++)
+        Th = Array.IndexOf(score, value4namelist);
+        if (Th == -1)
         {
-            PlayerPrefs.SetInt(num[i], score[i]);
+            Destroy(input);
+        }
+        else
+        {
+            //入れ替えた値を保存
+            for (int i = 0; i < num.Length; i++)
+            {
+                PlayerPrefs.SetInt(num[i], score[i]);
+                PlayerPrefs.SetString(i.ToString(), namelist[i]);
+            }
+        }
+    }
+
+    public void InputName()
+    {
+        namelist[Th] = input.text;
+        PlayerPrefs.SetString(Th.ToString(), namelist[Th]);
+        rankingText.text = "";
+        for (int i = 0; i < score.Length; i++)
+        {
+            rankingText.text += num[i];
+            rankingText.text += namelist[i];
+            rankingText.text += score[i].ToString();
+            rankingText.text += "\n";
         }
     }
 }
