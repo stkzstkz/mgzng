@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Controll : MonoBehaviour
 {
@@ -9,22 +10,40 @@ public class Controll : MonoBehaviour
     [SerializeField] private float limit = 8f;
     [SerializeField] private Vector3 jump;
     [SerializeField] private float jumpForce = 5.0f;
+    [SerializeField] private InputAction Jump;
+    
     private bool isGrounded;
     Rigidbody rb;
-
+    // private void OnEnable()
+    // {
+    //     Jump?.OnEnable();
+    //     Jump.performed += OnPerformed;
+    // }
+    // private void OnDisable()
+    // {
+    //     Jump?.OnDisable();
+    //     Jump.performed -= OnPerformed;
+    // }
+    // private void OnPerformed(InputAction.CallbackContext context) {
+    //     if (isGrounded)
+    //     {
+    //         rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+    //         isGrounded = false;
+    //     }
+    // }
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        jump = new Vector3(0.0f, 2.0f, 0.0f);
+        jump = new Vector3(0.0f, 1.0f, 0.0f);
     }
 
-    void OnCollisionStay()
+    private void OnCollisionStay()
     {
         isGrounded = true;
     }
 
-    void OnCollisionExit()
+    private void OnCollisionExit()
     {
         isGrounded = false;
     }
@@ -50,7 +69,7 @@ public class Controll : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
