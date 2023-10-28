@@ -319,6 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rankingText: {fileID: 87674579}
   input: {fileID: 712386024}
+  todestroy: {fileID: 712386022}
 --- !u!114 &87674579
 MonoBehaviour:
   m_ObjectHideFlags: 0

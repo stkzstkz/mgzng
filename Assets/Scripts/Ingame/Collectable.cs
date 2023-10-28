@@ -6,11 +6,6 @@ public class Collectable : MonoBehaviour
 {
     private float time = 0f;
     [SerializeField] private float interval = 30f;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -28,6 +23,7 @@ public class Collectable : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(this.gameObject);
+            // 取ったザンギの数追加
             CountZng.Instance.AddZng();
         }
     }

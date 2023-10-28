@@ -7,37 +7,22 @@ using TMPro;
 
 public class Ranking : MonoBehaviour
 {
-    private string[] num = { " 1. ", " 2. ", " 3. ", " 4. ", " 5. ", " 6. ", " 7. ", " 8. ", " 9. ", "10. " };
+    public string[] num = { " 1. ", " 2. ", " 3. ", " 4. ", " 5. ", " 6. ", " 7. ", " 8. ", " 9. ", "10. " };
     private int[] score = new int[10];
     [SerializeField] private Text rankingText;
     [SerializeField] private TMP_InputField input;
-    private static string name = "No Name";
+    [SerializeField] private GameObject todestroy;
+    // private static string name = "No Name";
     private string[] namelist = new string[10];
     private int Th = -1;
     void Start()
     {
         GetRanking();
         SetRanking(GameScoreStatic.Zng);
-
-        for (int i = 0; i < score.Length; i++)
-        {
-            rankingText.text += num[i];
-            if (score[i] == GameScoreStatic.Zng)
-            {
-                rankingText.text += "";
-            }
-            else
-            {
-                rankingText.text += namelist[i];
-            }
-            rankingText.text += score[i].ToString();
-            rankingText.text += "\n";
-        }
+        ViewRanking();
     }
 
-    /// <summary>
-    /// ランキング呼び出し
-    /// </summary>
+    // ランキング呼び出し
     private void GetRanking()
     {
         //ランキング呼び出し
@@ -47,13 +32,12 @@ public class Ranking : MonoBehaviour
             namelist[i] = PlayerPrefs.GetString(i.ToString());
         }
     }
-    /// <summary>
-    /// ランキング書き込み
-    /// </summary>
+    // ランキング書き込み
     private void SetRanking(int _value)
     {
+        // 書き込み要素の記憶
         int value4namelist = _value;
-        //書き込み用
+        //書き込み
         for (int i = 0; i < num.Length; i++)
         {
             //取得した値とRankingの値を比較して入れ替え
@@ -65,13 +49,15 @@ public class Ranking : MonoBehaviour
             }
         }
         Th = Array.IndexOf(score, value4namelist);
+        // 書き込み確認 
         if (Th == -1)
         {
-            Destroy(input);
+            // 書き込まれていない => プレイヤー書き込み欄消去
+            Destroy(todestroy);
         }
         else
         {
-            //入れ替えた値を保存
+            // 書き込まれた => 保存
             for (int i = 0; i < num.Length; i++)
             {
                 PlayerPrefs.SetInt(num[i], score[i]);
@@ -80,15 +66,17 @@ public class Ranking : MonoBehaviour
         }
     }
 
-    public void InputName()
+    // ランキング表示
+    private void ViewRanking()
     {
-        namelist[Th] = input.text;
-        PlayerPrefs.SetString(Th.ToString(), namelist[Th]);
-        rankingText.text = "";
         for (int i = 0; i < score.Length; i++)
         {
             rankingText.text += num[i];
-            rankingText.text += namelist[i];
+            if (score[i] != GameScoreStatic.Zng)
+            {
+                rankingText.text += namelist[i];
+            }
+            rankingText.text += " ";
             rankingText.text += score[i].ToString();
             rankingText.text += "\n";
         }

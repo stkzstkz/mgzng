@@ -5,10 +5,10 @@ using UnityEngine;
 public class Controll : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 4f;
-    private float leftRightSpeed = 8f;
-    private float limit = 8f;
-    private Vector3 jump;
-    private float jumpForce = 5.0f;
+    [SerializeField] private float leftRightSpeed = 8f;
+    [SerializeField] private float limit = 8f;
+    [SerializeField] private Vector3 jump;
+    [SerializeField] private float jumpForce = 5.0f;
     private bool isGrounded;
     Rigidbody rb;
 

@@ -11,18 +11,11 @@ public class CountZng : MonoBehaviour
     {
         Instance = this;
     }
-    // Start is called before the first frame update
     void Start()
     {
         NofZng.SetText("× {0}",GameScoreStatic.Zng);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // 取ったザンギの数追加
     public void AddZng()
     {
         GameScoreStatic.Zng++;

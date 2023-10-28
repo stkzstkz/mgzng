@@ -35,12 +35,6 @@ public class HP : MonoBehaviour
             Instantiate<GameObject>(lifeObj, transform);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     //　ライフゲージ全削除＆HP分作成(GameManagerから呼ぶ)
     // public void SetLifeGauge(int life) {
     //     //　体力を一旦全削除

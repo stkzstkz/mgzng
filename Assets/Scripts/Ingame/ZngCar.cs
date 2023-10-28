@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// GameManagerへの統合やクラスを別で作って継承するなどの工夫をして見やすくしたい．
 public class ZngCar : MonoBehaviour
 {
     [SerializeField] private GameObject ZngPrefab;
