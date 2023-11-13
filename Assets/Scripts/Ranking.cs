@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 using TMPro;
 
 public class Ranking : MonoBehaviour
@@ -15,6 +16,8 @@ public class Ranking : MonoBehaviour
     // private static string name = "No Name";
     private string[] namelist = new string[10];
     private int Th = -1;
+    private TextAsset csvFile;
+    private List<string[]> csvData = new List<string[]>();
     void Start()
     {
         GetRanking();
@@ -69,6 +72,7 @@ public class Ranking : MonoBehaviour
     // ランキング表示
     private void ViewRanking()
     {
+        rankingText.text = "";
         for (int i = 0; i < score.Length; i++)
         {
             rankingText.text += num[i];
@@ -80,5 +84,14 @@ public class Ranking : MonoBehaviour
             rankingText.text += score[i].ToString();
             rankingText.text += "\n";
         }
+    }
+
+    // テキストボックスからの読み取り
+    public void GetInput()
+    {
+        namelist[Th] = input.text;
+        PlayerPrefs.SetString(Th.ToString(), namelist[Th]);
+        namelist[Th] = PlayerPrefs.GetString(Th.ToString());
+        ViewRanking();
     }
 }
