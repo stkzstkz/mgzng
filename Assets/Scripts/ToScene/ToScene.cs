@@ -27,4 +27,8 @@ public class ToScene : MonoBehaviour
     {
         SceneManager.LoadScene("Title");
     }
+    public void ToRanking()
+    {
+        SceneManager.LoadScene("Ranking");
+    }
 }
