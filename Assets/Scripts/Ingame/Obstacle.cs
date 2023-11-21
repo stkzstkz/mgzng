@@ -14,9 +14,10 @@ public class Obstacle : MonoBehaviour
     {
         // 速度をランダムにすることで当たる場所を変更
         // moveSpeed = Random.Range(1.59f,2.41f); in Cotroll's movespeed = 2
-        moveSpeed = Random.Range(4.374f,6.626f);
-        if(this.transform.position.x < 0) {
-            moveSpeed = -1*moveSpeed;
+        moveSpeed = Random.Range(4.374f, 6.626f);
+        if (this.transform.position.x < 0)
+        {
+            moveSpeed = -1 * moveSpeed;
         }
     }
 
@@ -26,7 +27,8 @@ public class Obstacle : MonoBehaviour
         transform.Translate(Vector3.left * Time.deltaTime * moveSpeed);
         // プレイヤーがある程度進んだらお邪魔電通大生をDestroy(メモリリーク要調査)
         time += Time.deltaTime;
-        if (time > interval){
+        if (time > interval)
+        {
             Destroy(this.gameObject);
         }
     }

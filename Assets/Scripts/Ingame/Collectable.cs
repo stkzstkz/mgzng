@@ -12,7 +12,8 @@ public class Collectable : MonoBehaviour
     {
         // プレイヤーがある程度進んだらザンギをDestroy(メモリリーク要調査)
         time += Time.deltaTime;
-        if (time > interval){
+        if (time > interval)
+        {
             Destroy(this.gameObject);
         }
     }

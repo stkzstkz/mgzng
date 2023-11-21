@@ -27,6 +27,7 @@ public class TestRanking : MonoBehaviour
     void Start()
     {
         GetRanking();
+        // RankingシーンとResultシーンの選り分け
         if (SceneManager.GetActiveScene().name == "Ranking")
         {
             list.Sort((a, b) => (a.scores - b.scores));
@@ -66,6 +67,7 @@ public class TestRanking : MonoBehaviour
         list.Reverse();
     }
 
+    // ボタンが押されたときにcsvファイルに出力
     public async void SetCsv()
     {
         using (StreamWriter sw = new StreamWriter(path, true))
@@ -80,7 +82,7 @@ public class TestRanking : MonoBehaviour
         rankingText.text = "";
         for (int i = 0; i < length; i++)
         {
-            rankingText.text += i+1;
+            rankingText.text += i + 1;
             rankingText.text += ". ";
             rankingText.text += list[i].names;
             rankingText.text += list[i].scores;

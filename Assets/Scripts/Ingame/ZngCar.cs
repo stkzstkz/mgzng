@@ -19,15 +19,22 @@ public class ZngCar : MonoBehaviour
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float leftRightSpeed = 4f;
     [SerializeField] private float limit = 8.6f;
+    [SerializeField] private float center = 0.0f;
+    [SerializeField] private Vector3 car = new Vector3(-195f, 0f, 29f);
     private bool DirectionR = true;
     private bool OjmDirectionR = true;
+    private float pos;
     [SerializeField] private float x = 42f;
 
     // Start is called before the first frame update
     void Start()
     {
-        interval4Ojm = Random.Range(MinSpeed4Ojm,MaxSpeed4Ojm);
-        interval4Zng = Random.Range(MinSpeed4Zng,MaxSpeed4Zng);
+        if (GameScoreStatic.Level != 0)
+        {
+            transform.position = car;
+        }
+        interval4Ojm = Random.Range(MinSpeed4Ojm, MaxSpeed4Ojm);
+        interval4Zng = Random.Range(MinSpeed4Zng, MaxSpeed4Zng);
         OjmDirectionR = Random.value > 0.5;
     }
 
@@ -41,40 +48,73 @@ public class ZngCar : MonoBehaviour
             GameObject Zng = Instantiate(ZngPrefab);
             Vector3 ZngPos = this.transform.position;
             ZngPos.y = 2.3f;
-            ZngPos.z -= 15f;
+            if (GameScoreStatic.Level == 0)
+            {
+                ZngPos.z -= 15f;
+            }
+            else
+            {
+                ZngPos.x -= 15f;
+            }
             Zng.transform.position = ZngPos;
-            interval4Zng = Random.Range(MinSpeed4Zng,MaxSpeed4Zng);
+            interval4Zng = Random.Range(MinSpeed4Zng, MaxSpeed4Zng);
             time4Zng = 0f;
         }
-        if (time4Ojm > interval4Ojm) 
+        if (time4Ojm > interval4Ojm)
         {
             GameObject Ojm = Instantiate(OjmPrefab);
             Vector3 OjmPos = this.transform.position;
             OjmPos.y = 1.37f;
             OjmDirectionR = Random.value > 0.5;
-            if (OjmDirectionR)
+            if (GameScoreStatic.Level == 0)
             {
-                OjmPos.x = x;
-            }else{
-                OjmPos.x = -1*x;
+                if (OjmDirectionR)
+                {
+                    OjmPos.x = x;
+                }
+                else
+                {
+                    OjmPos.x = -1 * x;
+                }
+            }
+            else
+            {
+                if (OjmDirectionR)
+                {
+                    OjmPos.z = x;
+                }
+                else
+                {
+                    OjmPos.z = -1 * x;
+                }
             }
             Ojm.transform.position = OjmPos;
-            interval4Ojm = Random.Range(MinSpeed4Ojm,MaxSpeed4Ojm);
+            interval4Ojm = Random.Range(MinSpeed4Ojm, MaxSpeed4Ojm);
             time4Ojm = 0f;
         }
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
-        if (transform.position.x <= -limit)
+        if (GameScoreStatic.Level == 0)
+        {
+            pos = transform.position.x;
+        }
+        else
+        {
+            pos = transform.position.z;
+        }
+        if (pos <= -limit + center)
         {
             DirectionR = true;
         }
-        if (transform.position.x >= limit)
+        if (pos >= limit + center)
         {
             DirectionR = false;
         }
-        if(DirectionR)
+        if (DirectionR)
         {
             transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
-        }else{
+        }
+        else
+        {
             transform.Translate(Vector3.right * Time.deltaTime * leftRightSpeed);
         }
     }

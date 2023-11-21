@@ -2076,7 +2076,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1090051850}
         m_TargetAssemblyTypeName: ToScene, Assembly-CSharp
         m_MethodName: ToIngame
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2284,3 +2284,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NofZng: {fileID: 2009043525}
+  sounnd1: {fileID: 0}

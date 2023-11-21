@@ -7,19 +7,22 @@ public class HP : MonoBehaviour
     //　ライフゲージプレハブ
     [SerializeField] private GameObject lifeObj;
     public GameManager gm;
-    public static HP Instance {get; private set; }
+    public static HP Instance { get; private set; }
     public int life = 5;
     private void Awake()
     {
         Instance = this;
     }
-    public void SetLifeGauge2(int damage) {
+    public void SetLifeGauge2(int damage)
+    {
         //　最後のライフゲージを削除
         life = life - damage;
-        if(life <= 0)
+        if (life <= 0)
         {
             gm.GameOver();
-        }else{
+        }
+        else
+        {
             Destroy(transform.GetChild(damage).gameObject);
         }
     }
@@ -27,11 +30,13 @@ public class HP : MonoBehaviour
     void Start()
     {
         //　体力を一旦全削除
-        for (int i = 0; i < transform.childCount; i++) {
+        for (int i = 0; i < transform.childCount; i++)
+        {
             Destroy(transform.GetChild(i).gameObject);
         }
         //　現在の体力数分のライフゲージを作成
-        for (int i = 0; i < life; i++) {
+        for (int i = 0; i < life; i++)
+        {
             Instantiate<GameObject>(lifeObj, transform);
         }
     }

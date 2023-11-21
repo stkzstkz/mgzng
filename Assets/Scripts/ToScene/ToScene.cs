@@ -7,16 +7,17 @@ public class ToScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    public void ToIngame() 
+    public void ToIngame(int level)
     {
+        GameScoreStatic.Level = level;
         SceneManager.LoadScene("Ingame");
     }
     public void ToGameOver()
