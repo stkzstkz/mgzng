@@ -5,22 +5,21 @@ using UnityEngine.InputSystem;
 
 public class Controll : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 4f;
     [SerializeField] private float leftRightSpeed = 8f;
     [SerializeField] private float limit = 8f;
     [SerializeField] private Vector3 jump;
     [SerializeField] private float jumpForce = 5.0f;
     [SerializeField] private InputAction Jump;
-    [SerializeField] private Vector3 player = new Vector3(-237f, 1.81f, 29f);
+    // [SerializeField] private Vector3 player = new Vector3(-237f, 1.81f, 29f);
     private bool isGrounded;
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-        if (GameScoreStatic.Level != 0)
-        {
-            transform.position = player;
-        }
+        // if (GameScoreStatic.Level != 0)
+        // {
+        //     transform.position = player;
+        // }
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 1.0f, 0.0f);
     }
@@ -38,53 +37,25 @@ public class Controll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameScoreStatic.Level == 0){
-            transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        transform.Translate(Vector3.forward * Time.deltaTime * GameManager.Instance.GameSpeed, Space.World);
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            if (transform.position.x > -limit)
             {
-                if (transform.position.x > -limit)
-                {
-                    transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
-                }
-            }
-
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            {
-                if (transform.position.x < limit)
-                {
-                    transform.Translate(Vector3.right * Time.deltaTime * leftRightSpeed);
-                }
-            }
-
-            if (Input.GetKey(KeyCode.Space) && isGrounded)
-            {
-                rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-                isGrounded = false;
-            }
-        }else{
-            transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            {
-                if (transform.position.x > -limit)
-                {
-                    transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
-                }
-            }
-
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            {
-                if (transform.position.x < limit)
-                {
-                    transform.Translate(Vector3.right * Time.deltaTime * leftRightSpeed);
-                }
-            }
-
-            if (Input.GetKey(KeyCode.Space) && isGrounded)
-            {
-                rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-                isGrounded = false;
+                transform.Translate(Vector3.left * Time.deltaTime * GameManager.Instance.GameSpeed*2);
             }
         }
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            if (transform.position.x < limit)
+            {
+                transform.Translate(Vector3.right * Time.deltaTime * GameManager.Instance.GameSpeed*2);
+            }
+        }
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
+        {
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
     }
-
 }

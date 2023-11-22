@@ -1815,6 +1815,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_free_02_Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6790769120105607452, guid: f91c864e1d2f4fe4ca8477ee1c18a865, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f91c864e1d2f4fe4ca8477ee1c18a865, type: 3}
 --- !u!4 &8365916565636657018 stripped
@@ -1892,6 +1896,10 @@ PrefabInstance:
     - target: {fileID: 6774942966326170373, guid: f91c864e1d2f4fe4ca8477ee1c18a865, type: 3}
       propertyPath: m_Name
       value: Bush_free_02_Prefab (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790769120105607452, guid: f91c864e1d2f4fe4ca8477ee1c18a865, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f91c864e1d2f4fe4ca8477ee1c18a865, type: 3}
@@ -2605,6 +2613,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3904993979072572369}
     m_Modifications:
+    - target: {fileID: 5019682691817411347, guid: a722465517f918942849e9634d42ea3c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7137475858018859413, guid: a722465517f918942849e9634d42ea3c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4283,6 +4295,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_free_02_Prefab (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6790769120105607452, guid: f91c864e1d2f4fe4ca8477ee1c18a865, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f91c864e1d2f4fe4ca8477ee1c18a865, type: 3}
 --- !u!4 &158462045693622699 stripped
@@ -4375,6 +4391,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3904993979072572369}
     m_Modifications:
+    - target: {fileID: 5019682691817411347, guid: a722465517f918942849e9634d42ea3c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7137475858018859413, guid: a722465517f918942849e9634d42ea3c, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -5370,6 +5390,10 @@ PrefabInstance:
     - target: {fileID: 6774942966326170373, guid: f91c864e1d2f4fe4ca8477ee1c18a865, type: 3}
       propertyPath: m_Name
       value: Bush_free_02_Prefab (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790769120105607452, guid: f91c864e1d2f4fe4ca8477ee1c18a865, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f91c864e1d2f4fe4ca8477ee1c18a865, type: 3}
