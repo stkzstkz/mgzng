@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
 
-public class BGM_VIDEO_controller : MonoBehaviour
+public class BGM_Video_controller : MonoBehaviour
 {
     [SerializeField]
     AudioSource bgm_source;
