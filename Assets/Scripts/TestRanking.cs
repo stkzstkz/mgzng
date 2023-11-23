@@ -22,7 +22,7 @@ public class TestRanking : MonoBehaviour
     [SerializeField] private TMP_InputField input;
     private List<Setlist> list = new List<Setlist>();
     private List<string[]> csvData = new List<string[]>();
-    private string path = @"Assets/unchi.csv";
+    private string path = @"./unchi.csv";
     private Setlist setlist = new Setlist();
     void Awake()
     {
