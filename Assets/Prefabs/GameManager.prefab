@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2109115103581977297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2109115103581977296}
+  - component: {fileID: 2109115103581977311}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2109115103581977296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109115103581977297}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0007742787, y: 0.7371292, z: -0.030755773}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2109115103581977311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109115103581977297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d04d30e144ff24ba094a9fffcc134a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  limit: 8.6
+  jumpForce: 5
+  leftRightSpeed: 8
+  AppearPos: 42
+  GameSpeed:
+  - 4
+  - 8
+  plusSpeed:
+  - 0.1
+  - 0.1
+  jump: {x: 0, y: 1, z: 0}
+  ZngPrefab: {fileID: 7563955577749138188, guid: 1919c788ffaa3b0419b78c18b3939f14, type: 3}
+  OjmPrefab: {fileID: 8124267606050309013, guid: ccf3b0beff045944e8e2ac13c67619ea, type: 3}
+  ZngCar: {fileID: 0}
+  Stage: {fileID: 8558393050613050754, guid: 3f118ee26e1824f76aba140a67bd177c, type: 3}
+  PosLevel0: 582.1917
+  PosLevel1: 420.3917
+  MinIntervalZng: 1
+  MaxIntervalZng: 2
+  MinIntervalOjm: 3
+  MaxIntervalOjm: 5.5

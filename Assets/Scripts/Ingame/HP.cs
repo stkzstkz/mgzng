@@ -9,26 +9,17 @@ public class HP : MonoBehaviour
     public GameManager gm;
     public static HP Instance { get; private set; }
     public int life = 5;
+    public AudioClip sounnd;
+    AudioSource audioSource;
     private void Awake()
     {
         Instance = this;
     }
-    public void SetLifeGauge2(int damage)
-    {
-        //　最後のライフゲージを削除
-        life = life - damage;
-        if (life <= 0)
-        {
-            gm.GameOver();
-        }
-        else
-        {
-            Destroy(transform.GetChild(damage).gameObject);
-        }
-    }
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         //　体力を一旦全削除
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -38,6 +29,21 @@ public class HP : MonoBehaviour
         for (int i = 0; i < life; i++)
         {
             Instantiate<GameObject>(lifeObj, transform);
+        }
+    }
+    
+    public void SetLifeGauge2(int damage)
+    {
+        //ライフゲージを削除
+        life = life - damage;
+        if (life <= 0)
+        {
+            gm.GameOver();
+        }
+        else
+        {
+            audioSource.PlayOneShot(sounnd);
+            Destroy(transform.GetChild(damage).gameObject);
         }
     }
 }

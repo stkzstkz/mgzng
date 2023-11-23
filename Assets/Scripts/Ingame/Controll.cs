@@ -5,23 +5,21 @@ using UnityEngine.InputSystem;
 
 public class Controll : MonoBehaviour
 {
-    [SerializeField] private float leftRightSpeed = 8f;
-    [SerializeField] private float limit = 8f;
-    [SerializeField] private Vector3 jump;
-    [SerializeField] private float jumpForce = 5.0f;
-    [SerializeField] private InputAction Jump;
-    // [SerializeField] private Vector3 player = new Vector3(-237f, 1.81f, 29f);
+    public GameManager gm;
+    private float leftRightSpeed;
+    private float limit;
+    private Vector3 jump;
+    private float jumpForce;
     private bool isGrounded;
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-        // if (GameScoreStatic.Level != 0)
-        // {
-        //     transform.position = player;
-        // }
+        leftRightSpeed = gm.leftRightSpeed;
+        limit = gm.limit;
+        jump = gm.jump;
+        jumpForce = gm.jumpForce;
         rb = GetComponent<Rigidbody>();
-        jump = new Vector3(0.0f, 1.0f, 0.0f);
     }
 
     private void OnCollisionStay()
@@ -37,22 +35,88 @@ public class Controll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * GameManager.Instance.GameSpeed, Space.World);
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        transform.Translate(Vector3.forward * Time.deltaTime * GameManager.Instance.GameSpeed[GameScoreStatic.Level], Space.World);
+        if (Gamepad.current == null)
+        {
+            ForKeyBoard();
+        }
+        else if (Keyboard.current == null)
+        {
+            ForGamePad();
+        }
+        else if (Gamepad.current == null && Keyboard.current == null)
+        {
+            GameManager.Instance.GameSpeed[GameScoreStatic.Level] = 0;
+            Time.timeScale = 0;
+            return;
+        }
+        else
+        {
+            ForBoth();
+        }
+    }
+    private void ForBoth()
+    {
+        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed || Gamepad.current.leftStick.left.isPressed || Gamepad.current.dpad.left.isPressed)
         {
             if (transform.position.x > -limit)
             {
-                transform.Translate(Vector3.left * Time.deltaTime * GameManager.Instance.GameSpeed*2);
+                transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
             }
         }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed || Gamepad.current.leftStick.right.isPressed || Gamepad.current.dpad.right.isPressed)
         {
             if (transform.position.x < limit)
             {
-                transform.Translate(Vector3.right * Time.deltaTime * GameManager.Instance.GameSpeed*2);
+                transform.Translate(Vector3.right * Time.deltaTime * leftRightSpeed);
             }
         }
-        if (Input.GetKey(KeyCode.Space) && isGrounded)
+        if (Keyboard.current.spaceKey.isPressed || Gamepad.current.aButton.isPressed && isGrounded)
+        {
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
+    private void ForKeyBoard()
+    {
+        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
+        {
+            if (transform.position.x > -limit)
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
+            }
+        }
+        if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
+        {
+            if (transform.position.x < limit)
+            {
+                transform.Translate(Vector3.right * Time.deltaTime * leftRightSpeed);
+            }
+        }
+        if (Keyboard.current.spaceKey.isPressed && isGrounded)
+        {
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
+
+    private void ForGamePad()
+    {
+        if (Gamepad.current.leftStick.left.isPressed || Gamepad.current.dpad.left.isPressed)
+        {
+            if (transform.position.x > -limit)
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
+            }
+        }
+        if (Gamepad.current.leftStick.right.isPressed || Gamepad.current.dpad.right.isPressed)
+        {
+            if (transform.position.x < limit)
+            {
+                transform.Translate(Vector3.right * Time.deltaTime * leftRightSpeed);
+            }
+        }
+        if (isGrounded && Gamepad.current.aButton.isPressed)
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;

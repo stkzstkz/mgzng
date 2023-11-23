@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &30013563 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2386343144430234646, guid: 0acc735522f9445c5987ca11aa120057, type: 3}
-  m_PrefabInstance: {fileID: 191870973}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &190393561
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NofZng: {fileID: 396322505}
-  sounnd1: {fileID: 8300000, guid: 571e9f8d57ff84c4ebb7dfcb80eb392c, type: 3}
+  sounnd: {fileID: 0}
 --- !u!82 &396322508
 AudioSource:
   m_ObjectHideFlags: 0
@@ -689,11 +684,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &473986947 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8558393050613050754, guid: 3f118ee26e1824f76aba140a67bd177c, type: 3}
-  m_PrefabInstance: {fileID: 1436197617}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &604663259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,6 +1091,7 @@ MonoBehaviour:
   lifeObj: {fileID: 4620275380184928982, guid: 8730e5aceb342d24d952cbfc9e703bc0, type: 3}
   gm: {fileID: 1784710712}
   life: 5
+  sounnd: {fileID: 8300000, guid: a3265fe59ecb76b4183b0f36956f47e8, type: 3}
 --- !u!114 &1281622988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,6 +1236,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 640451730007126751, guid: 3f118ee26e1824f76aba140a67bd177c, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021612120993202966, guid: 3f118ee26e1824f76aba140a67bd177c, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1784710712}
     - target: {fileID: 3283367269595384497, guid: 3f118ee26e1824f76aba140a67bd177c, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1345,13 +1344,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7104941030686669205, guid: 3f118ee26e1824f76aba140a67bd177c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8558393050613050754, guid: 3f118ee26e1824f76aba140a67bd177c, type: 3}
       propertyPath: m_Name
       value: UEC
       objectReference: {fileID: 0}
     - target: {fileID: 8558393050613050754, guid: 3f118ee26e1824f76aba140a67bd177c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f118ee26e1824f76aba140a67bd177c, type: 3}
@@ -1472,23 +1475,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d04d30e144ff24ba094a9fffcc134a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndPoint1: {fileID: 4759422035428061162}
-  EndPoint2: {fileID: 30013563}
-  PlayerObject: {fileID: 2040080796}
-  Stage: {fileID: 473986947}
-  PosLevel0: 582.1917
-  PosLevel1: 420.3917
-  GameSpeed: 4
+  limit: 8.6
+  jumpForce: 5
+  leftRightSpeed: 8
+  AppearPos: 42
+  GameSpeed:
+  - 4
+  - 8
+  plusSpeed:
+  - 0.1
+  - 0.1
+  jump: {x: 0, y: 1, z: 0}
   ZngPrefab: {fileID: 7563955577749138188, guid: 1919c788ffaa3b0419b78c18b3939f14, type: 3}
   OjmPrefab: {fileID: 8124267606050309013, guid: ccf3b0beff045944e8e2ac13c67619ea, type: 3}
   ZngCar: {fileID: 6769039011236045217}
+  Stage: {fileID: 8558393050613050754, guid: 3f118ee26e1824f76aba140a67bd177c, type: 3}
+  PosLevel0: 582.1917
+  PosLevel1: 420.3917
   MinIntervalZng: 1
   MaxIntervalZng: 2
   MinIntervalOjm: 3
   MaxIntervalOjm: 5.5
-  leftRightSpeed: 4
-  AppearPos: 42
-  limit: 8.6
 --- !u!1 &1850023782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,6 +1693,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6720203195634791110, guid: 8920fef49c117d54abbb5466757d4dc4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6720203195634791110, guid: 8920fef49c117d54abbb5466757d4dc4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6720203195634791110, guid: 8920fef49c117d54abbb5466757d4dc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9176504765445459808, guid: 8920fef49c117d54abbb5466757d4dc4, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1793,19 +1812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51c60d0fcb6f46e09df6e05100df6d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftRightSpeed: 8
-  limit: 8
-  jump: {x: 0, y: 0, z: 0}
-  jumpForce: 5
-  Jump:
-    m_Name: Jump
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: d9f675bd-7139-4c8d-bffa-e685e8b54c47
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
+  gm: {fileID: 1784710712}
 --- !u!1 &2088552709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,6 +1928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2090220424}
   - component: {fileID: 2090220423}
+  - component: {fileID: 2090220425}
   m_Layer: 0
   m_Name: BGM Source
   m_TagString: Untagged
@@ -1938,7 +1946,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 46f009d319ebf422e8460e5d631b68ab, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.085
   m_Pitch: 1
@@ -2039,6 +2047,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2090220425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090220422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211c64831955f5d4eb495ba63d7453a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: e5a3531384e414c1d85e3dcaff769984, type: 3}
+  - {fileID: 8300000, guid: 46f009d319ebf422e8460e5d631b68ab, type: 3}
 --- !u!1001 &4759422035428061161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2104,11 +2127,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0acc735522f9445c5987ca11aa120057, type: 3}
---- !u!1 &4759422035428061162 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2386343144430234646, guid: 0acc735522f9445c5987ca11aa120057, type: 3}
-  m_PrefabInstance: {fileID: 4759422035428061161}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6769039011236045217 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4233664139520378455, guid: 1aaa02aaf49674d4fa18f5c6360c9424, type: 3}
@@ -2126,6 +2144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78e20ccde15ad341b8064d9fd9f2cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 1784710712}
   leftRightSpeed: 8
   limit: 8.6
 --- !u!1001 &7435594749489211382

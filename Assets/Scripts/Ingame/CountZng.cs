@@ -7,7 +7,7 @@ public class CountZng : MonoBehaviour
 {
     public TMPro.TMP_Text NofZng;
     public static CountZng Instance { get; private set; }
-    public AudioClip sounnd1;
+    public AudioClip sounnd;
     AudioSource audioSource;
     private void Awake()
     {
@@ -23,6 +23,6 @@ public class CountZng : MonoBehaviour
     {
         GameScoreStatic.Zng++;
         NofZng.SetText("× {0}", GameScoreStatic.Zng);
-        audioSource.PlayOneShot(sounnd1);
+        audioSource.PlayOneShot(sounnd);
     }
 }

@@ -24,6 +24,22 @@ public class TestRanking : MonoBehaviour
     private List<string[]> csvData = new List<string[]>();
     private string path = @"Assets/unchi.csv";
     private Setlist setlist = new Setlist();
+    void Awake()
+    {
+        if (!File.Exists(path))
+        {
+            int i = 0;
+            using (FileStream fs = File.Create(path)) ;
+            while (i < 10)
+            {
+                using (StreamWriter sw = new StreamWriter(path, true))
+                {
+                    sw.WriteLine("Default,0");
+                }
+                i++;
+            }
+        }
+    }
     void Start()
     {
         GetRanking();
@@ -60,7 +76,7 @@ public class TestRanking : MonoBehaviour
     // ランキング書き込み
     private void SetRanking(int value)
     {
-        setlist.names = "Default";
+        setlist.names = "Default   ";
         setlist.scores = value;
         list.Add(setlist);
         list.Sort((a, b) => (a.scores - b.scores));
@@ -82,6 +98,7 @@ public class TestRanking : MonoBehaviour
         rankingText.text = "";
         for (int i = 0; i < length; i++)
         {
+            rankingText.text += " ";
             rankingText.text += i + 1;
             rankingText.text += ". ";
             rankingText.text += list[i].names;

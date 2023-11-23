@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float MinSpeed;
-    [SerializeField] private float MaxSpeed;
+    private float moveSpeed;
+    private float MinSpeed;
+    private float MaxSpeed;
     private float CenterSpeed;
     private float time = 0f;
-    [SerializeField] private float interval = 30f;
+    [SerializeField] private float interval = 50f;
+    private float RealInterval;
     // Start is called before the first frame update
     void Start()
     {
-        CenterSpeed = GameManager.Instance.GameSpeed;
+        CenterSpeed = GameManager.Instance.GameSpeed[GameScoreStatic.Level];
         MinSpeed = CenterSpeed * (1 - GameManager.Instance.limit / GameManager.Instance.AppearPos);
         MaxSpeed = CenterSpeed * (1 + GameManager.Instance.limit / GameManager.Instance.AppearPos);
         // 速度をランダムにすることで当たる場所を変更
         // moveSpeed = Random.Range(4.374f, 6.626f); in movespeed 2
-        moveSpeed = Random.Range(MinSpeed, MaxSpeed);
-        if (this.transform.position.x < 0)
+        moveSpeed = -1 * Random.Range(MinSpeed, MaxSpeed);
+        if (this.transform.position.x > 0)
         {
-            moveSpeed = -1 * moveSpeed;
+            transform.rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
         }
+        RealInterval = interval / CenterSpeed;
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class Obstacle : MonoBehaviour
         transform.Translate(Vector3.left * Time.deltaTime * moveSpeed);
         // プレイヤーがある程度進んだらお邪魔電通大生をDestroy(メモリリーク要調査)
         time += Time.deltaTime;
-        if (time > interval)
+        if (time > RealInterval)
         {
             Destroy(this.gameObject);
         }
@@ -42,8 +44,7 @@ public class Obstacle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log(HP.Instance.life);
-            HP.Instance.SetLifeGauge2(1);
+            // HP.Instance.SetLifeGauge2(1);
             Destroy(this.gameObject);
         }
     }
