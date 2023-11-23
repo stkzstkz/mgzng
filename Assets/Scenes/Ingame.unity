@@ -1528,11 +1528,11 @@ MonoBehaviour:
   leftRightSpeed: 8
   AppearPos: 42
   GameSpeed:
-  - 4
+  - 5
   - 8
   plusSpeed:
   - 0.1
-  - 0.1
+  - 0.2
   jump: {x: 0, y: 1, z: 0}
   ZngPrefab: {fileID: 7563955577749138188, guid: 1919c788ffaa3b0419b78c18b3939f14, type: 3}
   OjmPrefab: {fileID: 8124267606050309013, guid: ccf3b0beff045944e8e2ac13c67619ea, type: 3}
