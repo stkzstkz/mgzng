@@ -16,13 +16,16 @@ public class ToScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.escapeKey.isPressed)
+        if (Keyboard.current.anyKey.isPressed || Gamepad.current.startButton.isPressed)
         {
             Application.Quit();
         }
-        if (scene.name == "Ranking" && Keyboard.current.anyKey.isPressed)
+        if (scene.name == "Ranking")
         {
-            ToTitle();
+            if (Keyboard.current.qKey.isPressed || Gamepad.current.bButton.isPressed)
+            {
+                ToTitle();
+            }
         }
     }
     public void ToIngame(int level)

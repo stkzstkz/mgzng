@@ -11,6 +11,7 @@ public class Controll : MonoBehaviour
     private Vector3 jump;
     private float jumpForce;
     public bool isGrounded;
+    // [SerializeField] private PauseCanvas;
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()

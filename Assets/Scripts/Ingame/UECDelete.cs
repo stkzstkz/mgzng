@@ -6,12 +6,16 @@ public class UECDelete : MonoBehaviour
 {
     private float time = 0f;
     [SerializeField] private float interval = 40f;
+    [SerializeField] private float MinInterval = 4f;
     private float RealInterval;
     private bool NotOnPlayer;
     void Start()
     {
         RealInterval = interval / GameManager.Instance.GameSpeed[GameScoreStatic.Level];
-        Debug.Log(RealInterval);
+        if (RealInterval < MinInterval)
+        {
+            RealInterval = MinInterval;
+        }
     }
     // Update is called once per frame
     void Update()

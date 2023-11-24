@@ -44,7 +44,7 @@ public class Obstacle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // HP.Instance.SetLifeGauge2(1);
+            HP.Instance.SetLifeGauge2(1);
             Destroy(this.gameObject);
         }
     }
