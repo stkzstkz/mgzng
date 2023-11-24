@@ -77,7 +77,7 @@ public class TestRanking : MonoBehaviour
     // ランキング書き込み
     private void SetRanking(int value)
     {
-        setlist.names = "Default   ";
+        setlist.names = "Default";
         setlist.scores = value;
         list.Add(setlist);
         list.Sort((a, b) => (a.scores - b.scores));
@@ -99,12 +99,19 @@ public class TestRanking : MonoBehaviour
         rankingText.text = "";
         for (int i = 0; i < length; i++)
         {
-            rankingText.text += " ";
+            if (i < 9)
+            {
+                rankingText.text += "  ";
+            }
             rankingText.text += i + 1;
             rankingText.text += ". ";
-            rankingText.text += list[i].names;
+            for (int scorelength = Digit(list[i].scores); scorelength < 3; scorelength++)
+            {
+                rankingText.text += "  ";
+            }
             rankingText.text += list[i].scores;
-            rankingText.text += " ";
+            rankingText.text += ": ";
+            rankingText.text += list[i].names;
             rankingText.text += "\n";
         }
     }
@@ -114,5 +121,18 @@ public class TestRanking : MonoBehaviour
     {
         setlist.names = input.text;
         ViewRanking(rankingLength);
+    }
+    public int Digit(int num)
+    {
+        // Mathf.Log10(0)はNegativeInfinityを返すため、別途処理する。
+        if (num == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return (int)Mathf.Log10(num) + 1;
+        }
+        // return (num == 0) ? 1 : ((int)Mathf.Log10(num) + 1);
     }
 }

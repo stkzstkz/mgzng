@@ -16,6 +16,7 @@ public class BGM_Video_controller : MonoBehaviour
     float elapsedTime = 0;
     [SerializeField]
     Canvas canvas;
+    bool MovieIsPlaying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +28,17 @@ public class BGM_Video_controller : MonoBehaviour
     void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime >= timeForVideo)
+        if (elapsedTime >= timeForVideo && canvas.enabled)
         {
             StartOPMovie();
         }
-        if (Keyboard.current.anyKey.isPressed)
+        if (Keyboard.current.anyKey.isPressed || Gamepad.current.startButton.isPressed)
         {
-            EndOPMovie();
+            if (!canvas.enabled)
+            {
+                EndOPMovie();
+                videoPlayer.Stop();
+            }
         }
     }
 

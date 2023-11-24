@@ -16,7 +16,7 @@ public class ToScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.anyKey.isPressed || Gamepad.current.startButton.isPressed)
+        if (Keyboard.current.escapeKey.isPressed)
         {
             Application.Quit();
         }
