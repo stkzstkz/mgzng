@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class BGM_Video_controller : MonoBehaviour
 {
@@ -29,6 +30,10 @@ public class BGM_Video_controller : MonoBehaviour
         if (elapsedTime >= timeForVideo)
         {
             StartOPMovie();
+        }
+        if (Keyboard.current.anyKey.isPressed)
+        {
+            EndOPMovie();
         }
     }
 

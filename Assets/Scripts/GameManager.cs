@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     public float jumpForce = 5f;
     public float leftRightSpeed = 8f;
     [HideInInspector] public float AppearPos = 42f;
-    public float[] GameSpeed = { 2f, 4f };
-    public float[] plusSpeed = { 0.1f, 0.1f };
+    public float[] GameSpeed = { 5f, 8f };
+    public float[] plusSpeed = { 0.1f, 0.2f };
     [HideInInspector] public Vector3 jump = new Vector3(0.0f, 1.0f, 0.0f);
     [HideInInspector][SerializeField] private GameObject ZngPrefab;
     [HideInInspector][SerializeField] private GameObject OjmPrefab;
@@ -36,12 +36,11 @@ public class GameManager : MonoBehaviour
     private float interval4Ojm;
     private float time4Zng = 0f;
     private float time4Ojm = 0f;
-    private bool DirectionR = true;
     private bool OjmDirectionR = true;
     private float pos;
     private Vector3 ZngPos;
     private Vector3 OjmPos;
-    private bool creatingLevel = false;
+
     void Awake()
     {
         Instance = this;

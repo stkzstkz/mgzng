@@ -5,9 +5,14 @@ using UnityEngine;
 public class UECDelete : MonoBehaviour
 {
     private float time = 0f;
-    [SerializeField] private float interval = 10f;
+    [SerializeField] private float interval = 40f;
+    private float RealInterval;
     private bool NotOnPlayer;
-
+    void Start()
+    {
+        RealInterval = interval / GameManager.Instance.GameSpeed[GameScoreStatic.Level];
+        Debug.Log(RealInterval);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -15,7 +20,7 @@ public class UECDelete : MonoBehaviour
         {
             time += Time.deltaTime;
         }
-        if (time > interval)
+        if (time > RealInterval)
         {
             GameManager.Instance.MakeStage();
             Destroy(transform.root.gameObject);

@@ -10,7 +10,7 @@ public class Controll : MonoBehaviour
     private float limit;
     private Vector3 jump;
     private float jumpForce;
-    private bool isGrounded;
+    public bool isGrounded;
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -35,8 +35,14 @@ public class Controll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * GameManager.Instance.GameSpeed[GameScoreStatic.Level], Space.World);
-        if (Gamepad.current == null)
+        transform.Translate(Vector3.forward * Time.deltaTime * gm.GameSpeed[GameScoreStatic.Level], Space.World);
+        if (Gamepad.current == null && Keyboard.current == null)
+        {
+            gm.GameSpeed[GameScoreStatic.Level] = 0;
+            Time.timeScale = 0;
+            return;
+        }
+        else if (Gamepad.current == null)
         {
             ForKeyBoard();
         }
@@ -44,37 +50,9 @@ public class Controll : MonoBehaviour
         {
             ForGamePad();
         }
-        else if (Gamepad.current == null && Keyboard.current == null)
-        {
-            GameManager.Instance.GameSpeed[GameScoreStatic.Level] = 0;
-            Time.timeScale = 0;
-            return;
-        }
         else
         {
             ForBoth();
-        }
-    }
-    private void ForBoth()
-    {
-        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed || Gamepad.current.leftStick.left.isPressed || Gamepad.current.dpad.left.isPressed)
-        {
-            if (transform.position.x > -limit)
-            {
-                transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
-            }
-        }
-        if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed || Gamepad.current.leftStick.right.isPressed || Gamepad.current.dpad.right.isPressed)
-        {
-            if (transform.position.x < limit)
-            {
-                transform.Translate(Vector3.right * Time.deltaTime * leftRightSpeed);
-            }
-        }
-        if (Keyboard.current.spaceKey.isPressed || Gamepad.current.aButton.isPressed && isGrounded)
-        {
-            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-            isGrounded = false;
         }
     }
     private void ForKeyBoard()
@@ -120,6 +98,31 @@ public class Controll : MonoBehaviour
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+        }
+    }
+    private void ForBoth()
+    {
+        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed || Gamepad.current.leftStick.left.isPressed || Gamepad.current.dpad.left.isPressed)
+        {
+            if (transform.position.x > -limit)
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
+            }
+        }
+        if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed || Gamepad.current.leftStick.right.isPressed || Gamepad.current.dpad.right.isPressed)
+        {
+            if (transform.position.x < limit)
+            {
+                transform.Translate(Vector3.right * Time.deltaTime * leftRightSpeed);
+            }
+        }
+        if (Keyboard.current.spaceKey.isPressed || Gamepad.current.aButton.isPressed)
+        {
+            if (isGrounded)
+            {
+                rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+                isGrounded = false;
+            }
         }
     }
 }

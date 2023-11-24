@@ -30,7 +30,7 @@ public class ToScene : MonoBehaviour
         GameScoreStatic.Level = level;
         SceneManager.LoadScene("Ingame");
     }
-        public void Retry()
+    public void Retry()
     {
         ToIngame(GameScoreStatic.Level);
         SceneManager.LoadScene("Ingame");
