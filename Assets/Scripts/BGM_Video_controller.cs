@@ -32,7 +32,18 @@ public class BGM_Video_controller : MonoBehaviour
         {
             StartOPMovie();
         }
-        if (Keyboard.current.anyKey.isPressed || Gamepad.current.startButton.isPressed)
+        if (Gamepad.current == null)
+        {
+            if (Keyboard.current.anyKey.isPressed)
+            {
+                if (!canvas.enabled)
+                {
+                    EndOPMovie();
+                    videoPlayer.Stop();
+                }
+            }
+        }
+        else if (Keyboard.current.anyKey.isPressed || Gamepad.current.startButton.isPressed)
         {
             if (!canvas.enabled)
             {
