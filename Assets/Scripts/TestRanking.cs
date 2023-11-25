@@ -87,6 +87,11 @@ public class TestRanking : MonoBehaviour
     // ボタンが押されたときにcsvファイルに出力
     public async void SetCsv()
     {
+        if (setlist.names == "")
+        {
+            setlist.names = "Default";
+        }
+        // setlist.scores.ToString();
         using (StreamWriter sw = new StreamWriter(path, true))
         {
             sw.WriteLine(setlist.names + "," + setlist.scores);
@@ -125,14 +130,6 @@ public class TestRanking : MonoBehaviour
     public int Digit(int num)
     {
         // Mathf.Log10(0)はNegativeInfinityを返すため、別途処理する。
-        if (num == 0)
-        {
-            return 1;
-        }
-        else
-        {
-            return (int)Mathf.Log10(num) + 1;
-        }
-        // return (num == 0) ? 1 : ((int)Mathf.Log10(num) + 1);
+        return (num == 0) ? 1 : ((int)Mathf.Log10(num) + 1);
     }
 }

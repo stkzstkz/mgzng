@@ -22,7 +22,14 @@ public class ToScene : MonoBehaviour
         }
         if (scene.name == "Ranking")
         {
-            if (Keyboard.current.qKey.isPressed || Gamepad.current.bButton.isPressed)
+            if (Gamepad.current == null)
+            {
+                if (Keyboard.current.qKey.isPressed)
+                {
+                    ToTitle();
+                }
+            }
+            else if (Keyboard.current.qKey.isPressed || Gamepad.current.bButton.isPressed)
             {
                 ToTitle();
             }
