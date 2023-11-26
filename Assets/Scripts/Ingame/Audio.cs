@@ -15,10 +15,4 @@ public class Audio : MonoBehaviour
         // 再生
         audioSource.Play();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
