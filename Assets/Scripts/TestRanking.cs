@@ -129,7 +129,7 @@ public class TestRanking : MonoBehaviour
     }
     public int Digit(int num)
     {
-        // Mathf.Log10(0)はNegativeInfinityを返すため、別途処理する。
+        // Mathf.Log10(0)はNegativeInfinityを返すため、別途処理
         return (num == 0) ? 1 : ((int)Mathf.Log10(num) + 1);
     }
 }

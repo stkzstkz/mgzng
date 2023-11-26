@@ -15,14 +15,14 @@ public class CountZng : MonoBehaviour
     }
     void Start()
     {
-        NofZng.SetText("× {0}", GameScoreStatic.Zng);
+        NofZng.SetText("×{0}", GameScoreStatic.Zng);
         audioSource = GetComponent<AudioSource>();
     }
     // 取ったザンギの数追加
     public void AddZng()
     {
         GameScoreStatic.Zng++;
-        NofZng.SetText("× {0}", GameScoreStatic.Zng);
+        NofZng.SetText("×{0}", GameScoreStatic.Zng);
         audioSource.PlayOneShot(sounnd);
     }
 }

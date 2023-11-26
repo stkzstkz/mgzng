@@ -7,15 +7,11 @@ using UnityEngine.InputSystem;
 
 public class BGM_Video_controller : MonoBehaviour
 {
-    [SerializeField]
-    AudioSource bgm_source;
-    [SerializeField]
-    VideoPlayer videoPlayer;
-    [SerializeField]
-    float timeForVideo;
+    [SerializeField] AudioSource bgm_source;
+    [SerializeField] VideoPlayer videoPlayer;
+    [SerializeField] float timeForVideo;
     float elapsedTime = 0;
-    [SerializeField]
-    Canvas canvas;
+    [SerializeField] Canvas canvas;
     bool MovieIsPlaying = false;
 
     // Start is called before the first frame update

@@ -118,18 +118,15 @@ public class GameManager : MonoBehaviour
     }
     public void MakeStage()
     {
+        float y = Random.Range(-0.01f, 0.01f);
         if (GameScoreStatic.Level == 0)
         {
-            float x = Random.Range(-15f, -10f);
-            Debug.Log(x);
-            Instantiate(Stage, new Vector3(-12.42848f, 0.0f, PosLevel0), Quaternion.Euler(0.0f, 0.0f, 0.0f));
+            Instantiate(Stage, new Vector3(-12.42848f, y, PosLevel0), Quaternion.Euler(0.0f, 0.0f, 0.0f));
             PosLevel0 += 582.191682f;
         }
         else
         {
-            float x = Random.Range(23f, 27f);
-            Debug.Log(x);
-            Instantiate(Stage, new Vector3(25.2f, 0.0f, PosLevel1), Quaternion.Euler(0.0f, -82.9f, 0.0f));
+            Instantiate(Stage, new Vector3(25.2f, y, PosLevel1), Quaternion.Euler(0.0f, -82.9f, 0.0f));
             PosLevel1 += 420.391682f;
         }
     }
