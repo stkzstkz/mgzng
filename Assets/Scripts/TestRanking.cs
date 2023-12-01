@@ -11,6 +11,11 @@ using System.Text;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
+public class Setlist
+{
+    public string names { get; set; }
+    public int scores { get; set; }
+}
 public class TestRanking : MonoBehaviour
 {
     public int rankingLength = 10;
@@ -20,11 +25,6 @@ public class TestRanking : MonoBehaviour
     private List<string[]> csvData = new List<string[]>();
     private string path = @"./unchi.csv";
     private Setlist setlist = new Setlist();
-    private class Setlist
-    {
-        public string names { get; set; }
-        public int scores { get; set; }
-    }
     void Awake()
     {
         if (!File.Exists(path))
@@ -85,36 +85,22 @@ public class TestRanking : MonoBehaviour
     }
 
     // ボタンが押されたときにcsvファイルに出力
-    public void SetCsv()
+    public async void SetCsv()
     {
         if (setlist.names == "")
         {
             setlist.names = "Default";
         }
-        try
+        // setlist.scores.ToString();
+        using (StreamWriter sw = new StreamWriter(path, true))
         {
-            using (StreamWriter sw = new StreamWriter(path, true))
-            {
-                sw.WriteLine(setlist.names + "," + setlist.scores);
-            }
-        }
-        catch (IOException ex)
-        {
-            Debug.LogError("ファイルへのアクセス中にエラーが発生しました: " + ex.Message);
+            sw.WriteLine(setlist.names + "," + setlist.scores);
         }
     }
 
     // ランキング表示
     private void ViewRanking(int length)
     {
-        if (list.Count == 0)
-        {
-            return;
-        }
-        if (list.Count < 10)
-        {
-            length = list.Count;
-        }
         rankingText.text = "";
         for (int i = 0; i < length; i++)
         {
